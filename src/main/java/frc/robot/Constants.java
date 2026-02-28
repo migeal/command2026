@@ -63,10 +63,8 @@ public final class Constants {
     public static final PIDConstants rotationConstants = new PIDConstants(5.0, 0.0, 0.0);
     
 
-    public static final double robotWidth = 0.622
-    //Units.inchesToMeters(37.0);
-    public static final double robotLength =0.535
-     //Units.inchesToMeters(37.0);
+    public static final double robotWidth = Units.inchesToMeters(37.0);
+    public static final double robotLength = Units.inchesToMeters(37.0);
     public static final double WheelYdist = robotLength*0.5;
     public static final double WheelXdist = robotWidth*0.5;
 
