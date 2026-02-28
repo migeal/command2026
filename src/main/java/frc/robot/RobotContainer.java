@@ -34,6 +34,7 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.GenericHID.RumbleType;
+import edu.wpi.first.wpilibj.PS4Controller.Button;
 import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.StartEndCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandJoystick;
@@ -67,7 +68,7 @@ public class RobotContainer {
   private final CommandXboxController m_driverController =
       new CommandXboxController(OperatorConstants.kDriverControllerPort);
       private final CommandJoystick m_GunnerStick = new CommandJoystick(OperatorConstants.kGunnerControllerPort);
-
+private final GenericHID m_pray = new GenericHID(0);
       //
       //subsystems 
 
@@ -83,6 +84,10 @@ public class RobotContainer {
        private final Spit m_spit = new Spit(m_pickup);
        private final Fire m_fire = new Fire(m_shooter);
        //buttons
+
+       private final JoystickButton m_trigger = new JoystickButton(m_pray,1);
+       private final JoystickButton m_reload = new JoystickButton(m_pray,2);
+       private final JoystickButton m_unload = new JoystickButton(m_pray,5);
          
        private final SendableChooser<Command> autoChooser;
 
@@ -142,7 +147,8 @@ public class RobotContainer {
     m_driverController.rightTrigger(0.7).whileTrue(m_eat);
 
     m_GunnerStick.button(1).toggleOnTrue(m_fire);
-if(m_GunnerStick.button(1).getAsBoolean()){
+    m_trigger.toggleOnTrue(m_fire);
+if(m_reload.getAsBoolean()){
     m_driverController.setRumble(GenericHID.RumbleType.kLeftRumble, 0.5);
    }
    else{
@@ -152,6 +158,10 @@ if(m_GunnerStick.button(1).getAsBoolean()){
     m_GunnerStick.button(2).whileTrue(m_reLoad);
 
     m_GunnerStick.button(5).whileTrue(m_deStick);
+
+    m_reload.whileTrue(m_reLoad);
+
+    m_unload.whileTrue(m_deStick);
 
 
   }
