@@ -12,7 +12,9 @@ import frc.robot.Constants.Motorconstants;
 public class Pickup extends SubsystemBase {
    WPI_VictorSPX Grasper = new WPI_VictorSPX(Motorconstants.PickupMotor);
   /** Creates a new ExampleSubsystem. */
-  public Pickup() {}
+  public Pickup() {
+    Grasper.setInverted(true);
+  }
 
   /**
    * Example command factory method.
@@ -20,10 +22,10 @@ public class Pickup extends SubsystemBase {
    * @return a command
    */
   public void eat(){
-    Grasper.set(1);
+    Grasper.set(0.25);
   }
   public void spit(){
-    Grasper.set(-1);
+    Grasper.set(-0.25);
   }
   public void stop(){
     Grasper.set(0);

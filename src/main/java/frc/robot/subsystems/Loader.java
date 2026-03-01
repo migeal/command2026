@@ -12,7 +12,9 @@ import frc.robot.Constants.Motorconstants;
 public class Loader extends SubsystemBase {
    WPI_VictorSPX load = new WPI_VictorSPX(Motorconstants.loadMotor);
   /** Creates a new ExampleSubsystem. */
-  public Loader() {}
+  public Loader() {
+    load.setInverted(true);
+  }
 
   /**
    * Example command factory method.
