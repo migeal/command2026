@@ -88,6 +88,7 @@ private final GenericHID m_pray = new GenericHID(0);
        private final JoystickButton m_trigger = new JoystickButton(m_pray,1);
        private final JoystickButton m_reload = new JoystickButton(m_pray,2);
        private final JoystickButton m_unload = new JoystickButton(m_pray,5);
+       private final JoystickButton m_reload_w_pickup = new JoystickButton(m_pray, 3);
          
        private final SendableChooser<Command> autoChooser;
 
@@ -162,6 +163,9 @@ if(m_reload.getAsBoolean()){
     m_reload.whileTrue(m_reLoad);
 
     m_unload.whileTrue(m_deStick);
+
+    m_reload_w_pickup.whileTrue(m_reLoad);
+    m_reload_w_pickup.whileTrue(m_eat);
 
 
   }
