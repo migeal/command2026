@@ -22,10 +22,10 @@ public class Pickup extends SubsystemBase {
    * @return a command
    */
   public void eat(){
-    Grasper.set(0.25);
+    Grasper.set(0.5);
   }
   public void spit(){
-    Grasper.set(-0.25);
+    Grasper.set(-0.5);
   }
   public void stop(){
     Grasper.set(0);
