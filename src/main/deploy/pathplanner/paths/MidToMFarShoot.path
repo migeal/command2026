@@ -3,13 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 2.0,
+        "x": 3.7,
         "y": 4.0
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.791018845723471,
-        "y": 4.057463217604521
+        "x": 3.2444824654663313,
+        "y": 3.7822864859570045
       },
       "isLocked": false,
       "linkedName": null
@@ -20,8 +20,8 @@
         "y": 3.8
       },
       "prevControl": {
-        "x": 1.9173957264637487,
-        "y": 3.7896046568986144
+        "x": 3.5934886141965237,
+        "y": 3.9307318536974463
       },
       "nextControl": null,
       "isLocked": false,
@@ -42,7 +42,7 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -91.40412583298455
+    "rotation": -90.0
   },
   "reversed": false,
   "folder": "Mstart_to_Shoots",

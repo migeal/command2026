@@ -7,7 +7,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "midToLShoot"
+            "pathName": "RightToRFarShoot"
           }
         },
         {
@@ -39,6 +39,6 @@
     }
   },
   "resetOdom": true,
-  "folder": "CloseShooting",
+  "folder": "FarShooting",
   "choreoAuto": false
 }

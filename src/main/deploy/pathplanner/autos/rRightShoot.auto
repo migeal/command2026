@@ -7,38 +7,13 @@
         {
           "type": "path",
           "data": {
-            "pathName": "RightToRFarShoot"
-          }
-        },
-        {
-          "type": "parallel",
-          "data": {
-            "commands": [
-              {
-                "type": "named",
-                "data": {
-                  "name": "Fire"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "ReLoad"
-                }
-              },
-              {
-                "type": "wait",
-                "data": {
-                  "waitTime": 5.0
-                }
-              }
-            ]
+            "pathName": "RightToRShoot"
           }
         }
       ]
     }
   },
   "resetOdom": true,
-  "folder": null,
+  "folder": "CloseShooting",
   "choreoAuto": false
 }

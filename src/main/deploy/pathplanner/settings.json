@@ -7,7 +7,10 @@
     "Rstart_to_Shoots",
     "Mstart_to_Shoots"
   ],
-  "autoFolders": [],
+  "autoFolders": [
+    "FarShooting",
+    "CloseShooting"
+  ],
   "defaultMaxVel": 3.0,
   "defaultMaxAccel": 3.0,
   "defaultMaxAngVel": 540.0,
