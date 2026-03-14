@@ -8,8 +8,8 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 3.0,
-        "y": 4.0
+        "x": 3.0407551725842006,
+        "y": 4.086175916502864
       },
       "isLocked": false,
       "linkedName": null
@@ -17,11 +17,11 @@
     {
       "anchor": {
         "x": 3.3,
-        "y": 4.0
+        "y": 3.8
       },
       "prevControl": {
-        "x": 2.3,
-        "y": 4.0
+        "x": 2.463699061287599,
+        "y": 3.9742012890938647
       },
       "nextControl": null,
       "isLocked": false,
@@ -45,7 +45,7 @@
     "rotation": -90.0
   },
   "reversed": false,
-  "folder": "start_to_closeShoots",
+  "folder": "Mstart_to_Shoots",
   "idealStartingState": {
     "velocity": 0,
     "rotation": 0.0
