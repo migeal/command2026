@@ -131,17 +131,6 @@ public class DriveTrain extends SubsystemBase {
             m_backLeft.getPosition(),
             m_backRight.getPosition()
         });
-    
-   /*  LimelightHelpers.PoseEstimate limelightMeasurement = LimelightHelpers.getBotPoseEstimate_wpiBlue("limelight");
-    if (limelightMeasurement != null){
-      if (limelightMeasurement.tagCount >= 2) {
-        m_odometry.setVisionMeasurementStdDevs(VecBuilder.fill(0.7, 0.7, 9999999));
-        m_odometry.addVisionMeasurement(
-          limelightMeasurement.pose,
-          limelightMeasurement.timestampSeconds
-        );
-      } 
-    } */
    
     //boolean useMegaTag2 = true; //set to false to use MegaTag1
     boolean doRejectUpdate = false;
@@ -154,6 +143,8 @@ public class DriveTrain extends SubsystemBase {
       if(mt1.tagCount == 1 && mt1.rawFiducials.length == 1)
       {
             MTOne = true;
+            System.out.println("tagcount==1");
+
         if(mt1.rawFiducials[0].ambiguity > .7)
         {
           doRejectUpdate = true;
@@ -172,7 +163,7 @@ public class DriveTrain extends SubsystemBase {
 
       if(!doRejectUpdate)
       {
-        //System.out.println("Update successful");
+        System.out.println("Update successful");
         m_odometry.setVisionMeasurementStdDevs(VecBuilder.fill(.7,.7,9999999));
         m_odometry.addVisionMeasurement(
             mt1.pose,
@@ -180,28 +171,7 @@ public class DriveTrain extends SubsystemBase {
             System.out.println("m_odometry added");
       }
     }
-   /* 
-    else if (useMegaTag2 == true)
-    {
-      LimelightHelpers.SetRobotOrientation("limelight", m_odometry.getEstimatedPosition().getRotation().getDegrees(), 0, 0, 0, 0, 0);
-      LimelightHelpers.PoseEstimate mt2 = LimelightHelpers.getBotPoseEstimate_wpiBlue_MegaTag2("limelight");
-      if(Math.abs(m_imu.getRate()) > 720) // if our angular velocity is greater than 720 degrees per second, ignore vision updates
-      {
-        doRejectUpdate = true;
-      }
-      if(mt2.tagCount == 0)
-      {
-        doRejectUpdate = true;
-      }
-      if(!doRejectUpdate)
-      {
-        m_odometry.setVisionMeasurementStdDevs(VecBuilder.fill(.7,.7,9999999));
-        m_odometry.addVisionMeasurement(
-            mt2.pose,
-            mt2.timestampSeconds);
-      }
-    }    
-    */
+   
     // if mt1 is more than 0 
     SmartDashboard.putBoolean("MT1 = one", MTOne);
      // smartdash pos
