@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 2.0,
-        "y": 2.0
+        "x": 4.0,
+        "y": 0.5
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.216979493513304,
-        "y": 2.1241768875222364
+        "x": 3.0644326346384023,
+        "y": 0.6649657687835837
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 3.5,
-        "y": 3.3
+        "x": 3.7,
+        "y": 3.1
       },
       "prevControl": {
-        "x": 2.5899565085184237,
-        "y": 2.7660072571679892
+        "x": 2.7,
+        "y": 3.1
       },
       "nextControl": null,
       "isLocked": false,
@@ -42,10 +42,10 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -59.99999999999999
+    "rotation": -55.0
   },
   "reversed": false,
-  "folder": null,
+  "folder": "Rstart_to_Shoots",
   "idealStartingState": {
     "velocity": 0,
     "rotation": 0.0

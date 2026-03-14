@@ -9,19 +9,19 @@
       "prevControl": null,
       "nextControl": {
         "x": 3.052314152253167,
-        "y": 7.4337313499430815
+        "y": 7.433731349943081
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 2.7,
-        "y": 2.6
+        "x": 2.6,
+        "y": 3.8
       },
       "prevControl": {
-        "x": 2.303469879518072,
-        "y": 3.3246987951807228
+        "x": 2.3471807228915655,
+        "y": 4.483036144578314
       },
       "nextControl": null,
       "isLocked": false,
@@ -42,7 +42,7 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -59.99999999999999
+    "rotation": -90.0
   },
   "reversed": false,
   "folder": "Lstart_to_Shoots",
