@@ -7,7 +7,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "midToLShoot"
+            "pathName": "RightToMFarShoot"
           }
         },
         {
@@ -15,21 +15,21 @@
           "data": {
             "commands": [
               {
+                "type": "wait",
+                "data": {
+                  "waitTime": 5.0
+                }
+              },
+              {
                 "type": "named",
                 "data": {
-                  "name": "Fire"
+                  "name": "FullFire"
                 }
               },
               {
                 "type": "named",
                 "data": {
                   "name": "ReLoad"
-                }
-              },
-              {
-                "type": "wait",
-                "data": {
-                  "waitTime": 5.0
                 }
               },
               {
@@ -45,6 +45,6 @@
     }
   },
   "resetOdom": true,
-  "folder": "CloseShooting",
+  "folder": "FarShooting",
   "choreoAuto": false
 }

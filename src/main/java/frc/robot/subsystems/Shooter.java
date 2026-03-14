@@ -23,9 +23,9 @@ public class Shooter extends SubsystemBase {
     LaunchL.set(0.535);
   }
   //just in case
-  public void HalfFire(){
-   LaunchR.set(0.5);
-    LaunchL.set(0.5);
+  public void Fullfire(){
+   LaunchR.set(1);
+    LaunchL.set(1);
   }
   public void reversefire(){
    LaunchR.set(-1);

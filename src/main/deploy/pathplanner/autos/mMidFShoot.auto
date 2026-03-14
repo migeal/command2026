@@ -7,25 +7,13 @@
         {
           "type": "path",
           "data": {
-            "pathName": "midToLShoot"
+            "pathName": "MidToMFarShoot"
           }
         },
         {
           "type": "parallel",
           "data": {
             "commands": [
-              {
-                "type": "named",
-                "data": {
-                  "name": "Fire"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "ReLoad"
-                }
-              },
               {
                 "type": "wait",
                 "data": {
@@ -37,6 +25,18 @@
                 "data": {
                   "name": "Eat"
                 }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "FullFire"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "ReLoad"
+                }
               }
             ]
           }
@@ -45,6 +45,6 @@
     }
   },
   "resetOdom": true,
-  "folder": "CloseShooting",
+  "folder": "FarShooting",
   "choreoAuto": false
 }
