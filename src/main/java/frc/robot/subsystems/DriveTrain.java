@@ -187,6 +187,10 @@ public class DriveTrain extends SubsystemBase {
 
     //Display Odometry IMU angle
     SmartDashboard.putNumber("IMU Angle", getIMUAngle());
+    SmartDashboard.putBoolean("isConnected", m_imu.isConnected());
+    SmartDashboard.putBoolean("isCalibrating", m_imu.isCalibrating());
+    SmartDashboard.putBoolean("isMoving", m_imu.isMoving());
+    SmartDashboard.putBoolean("isRotating", m_imu.isRotating());
     
     //Display Kinematics
     SmartDashboard.putNumber("Front Left Encoder Count", TurnCountFL());
