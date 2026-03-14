@@ -139,7 +139,7 @@ public class DriveTrain extends SubsystemBase {
       LimelightHelpers.PoseEstimate mt1 = LimelightHelpers.getBotPoseEstimate_wpiBlue("limelight");
        Double[] mt1Pos =  {(mt1.pose.getX()),(mt1.pose.getY()),(mt1.pose.getRotation().getDegrees())};
       if(mt1 != null){
-        System.out.println("mt1 not null");
+        //System.out.println("mt1 not null");
       if(mt1.tagCount == 1 && mt1.rawFiducials.length == 1)
       {
             MTOne = true;
