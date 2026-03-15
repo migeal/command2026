@@ -7,13 +7,19 @@
         {
           "type": "path",
           "data": {
-            "pathName": "RightToRFarShoot"
+            "pathName": "RightToRShoot"
           }
         },
         {
           "type": "parallel",
           "data": {
             "commands": [
+              {
+                "type": "wait",
+                "data": {
+                  "waitTime": 5.0
+                }
+              },
               {
                 "type": "named",
                 "data": {
@@ -27,9 +33,9 @@
                 }
               },
               {
-                "type": "wait",
+                "type": "named",
                 "data": {
-                  "waitTime": 5.0
+                  "name": "Eat"
                 }
               }
             ]
@@ -39,6 +45,6 @@
     }
   },
   "resetOdom": true,
-  "folder": null,
+  "folder": "CloseShooting",
   "choreoAuto": false
 }

@@ -7,7 +7,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "midToLShoot"
+            "pathName": "LeftToLFarShoot"
           }
         },
         {
@@ -17,7 +17,13 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "Fire"
+                  "name": "FullFire"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Eat"
                 }
               },
               {
@@ -31,12 +37,6 @@
                 "data": {
                   "waitTime": 5.0
                 }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "Eat"
-                }
               }
             ]
           }
@@ -45,6 +45,6 @@
     }
   },
   "resetOdom": true,
-  "folder": "CloseShooting",
+  "folder": "FarShooting",
   "choreoAuto": false
 }

@@ -31,6 +31,12 @@
                 "data": {
                   "name": "ReLoad"
                 }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Eat"
+                }
               }
             ]
           }
@@ -45,6 +51,6 @@
     }
   },
   "resetOdom": false,
-  "folder": null,
+  "folder": "CloseShooting",
   "choreoAuto": false
 }

@@ -31,6 +31,12 @@
                 "data": {
                   "waitTime": 5.0
                 }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Eat"
+                }
               }
             ]
           }
@@ -39,6 +45,6 @@
     }
   },
   "resetOdom": true,
-  "folder": null,
+  "folder": "CloseShooting",
   "choreoAuto": false
 }

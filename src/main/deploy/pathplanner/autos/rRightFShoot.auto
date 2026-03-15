@@ -7,7 +7,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "midToLShoot"
+            "pathName": "RightToRFarShoot"
           }
         },
         {
@@ -17,7 +17,7 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "Fire"
+                  "name": "FullFire"
                 }
               },
               {
@@ -45,6 +45,6 @@
     }
   },
   "resetOdom": true,
-  "folder": "CloseShooting",
+  "folder": "FarShooting",
   "choreoAuto": false
 }

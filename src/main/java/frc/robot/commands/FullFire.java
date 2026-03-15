@@ -8,7 +8,7 @@ import frc.robot.subsystems.ExampleSubsystem;
 import frc.robot.subsystems.Shooter;
 import edu.wpi.first.wpilibj2.command.Command;
 /** An example command that uses an example subsystem. */
-public class Fire extends Command {
+public class FullFire extends Command {
   @SuppressWarnings("PMD.UnusedPrivateField")
   private final Shooter m_shooter;
 
@@ -17,7 +17,7 @@ public class Fire extends Command {
    *
    * @param subsystem The subsystem used by this command.
    */
-  public Fire(Shooter subsystem) {
+  public FullFire(Shooter subsystem) {
     m_shooter = subsystem;
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(subsystem);
@@ -26,7 +26,7 @@ public class Fire extends Command {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-     m_shooter.fire();
+     m_shooter.Fullfire();
     // System.out.println("Fire is called");
   }
    
