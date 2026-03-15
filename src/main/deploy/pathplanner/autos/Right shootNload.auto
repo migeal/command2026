@@ -11,9 +11,27 @@
           }
         },
         {
-          "type": "parallel",
+          "type": "sequential",
           "data": {
             "commands": [
+              {
+                "type": "named",
+                "data": {
+                  "name": "FireCon"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "EatCon"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "ReLoadCon"
+                }
+              },
               {
                 "type": "wait",
                 "data": {
@@ -23,19 +41,19 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "Fire"
+                  "name": "ReloadEnd"
                 }
               },
               {
                 "type": "named",
                 "data": {
-                  "name": "ReLoad"
+                  "name": "EatEnd"
                 }
               },
               {
                 "type": "named",
                 "data": {
-                  "name": "Eat"
+                  "name": "FireEnd"
                 }
               }
             ]
