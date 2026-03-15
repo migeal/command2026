@@ -22,7 +22,7 @@ public class Loader extends SubsystemBase {
    * @return a command
    */
   public void reload(){
-    load.set(0.5);
+    load.set(0.75);
   }
   //just in case
   public void deStick(){

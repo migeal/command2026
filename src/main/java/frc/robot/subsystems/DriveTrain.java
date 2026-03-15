@@ -136,7 +136,7 @@ public class DriveTrain extends SubsystemBase {
     boolean doRejectUpdate = false;
     //if(useMegaTag2 == false)
         //System.out.println("Limelight code run");
-      LimelightHelpers.PoseEstimate mt1 = LimelightHelpers.getBotPoseEstimate_wpiBlue("limelight");
+      LimelightHelpers.PoseEstimate mt1 = LimelightHelpers.getBotPoseEstimate_wpiBlue("limelight-ronin");
        Double[] mt1Pos =  {(mt1.pose.getX()),(mt1.pose.getY()),(mt1.pose.getRotation().getDegrees())};
       if(mt1 != null){
         //System.out.println("mt1 not null");
@@ -145,6 +145,7 @@ public class DriveTrain extends SubsystemBase {
             MTOne = true;
             System.out.println("tagcount==1");
 
+            System.out.println("mt1 is 1");
         if(mt1.rawFiducials[0].ambiguity > .7)
         {
           doRejectUpdate = true;
