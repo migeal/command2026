@@ -160,6 +160,10 @@ if(m_reload.getAsBoolean()){
 
     m_GunnerStick.button(5).whileTrue(m_deStick);
 
+    m_GunnerStick.button(3).whileTrue(m_reLoad);
+
+    m_GunnerStick.button(3).whileTrue(m_eat);
+
     m_reload.whileTrue(m_reLoad);
 
     m_unload.whileTrue(m_deStick);
