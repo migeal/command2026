@@ -194,10 +194,8 @@ if(m_reload.getAsBoolean()){
    *
    * @return the command to run in autonomous
    */
-  public Command getAutonomousCommand() {
-    // An example command will be run in autonomous
-    
-   return new PathPlannerAuto("lLeftShoot");
+   public Command getAutonomousCommand() {
+    return autoChooser.getSelected();
   }
    
   
