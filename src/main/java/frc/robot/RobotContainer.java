@@ -96,7 +96,22 @@ private final GenericHID m_pray = new GenericHID(0);
   public RobotContainer() {
     // Configure the trigger bindings
     configureBindings();
+ // For convenience a programmer could change this when going to competition.
+    boolean isCompetition = true;
 
+    // Build an auto chooser. This will use Commands.none() as the default option.
+    // As an example, this will only show autos that start with "comp" while at
+    // competition as defined by the programmer
+    autoChooser = AutoBuilder.buildAutoChooserWithOptionsModifier(
+      (stream) -> isCompetition
+        ? stream.filter(auto -> auto.getName().startsWith("l"))
+        : stream
+    );
+
+    SmartDashboard.putData("Auto Chooser", autoChooser);
+  
+
+ 
    
      //Configure driving default
       m_robotDrive.setDefaultCommand(
@@ -110,7 +125,7 @@ private final GenericHID m_pray = new GenericHID(0);
                  
           );
 
-           autoChooser = AutoBuilder.buildAutoChooser();
+           
     SmartDashboard.putData("Auto Mode", autoChooser);
   }
 
@@ -179,9 +194,9 @@ if(m_reload.getAsBoolean()){
    *
    * @return the command to run in autonomous
    */
-  public Command getAutonomousCommand() {
-    // An example command will be run in autonomous
-    
-   return new PathPlannerAuto("ShootNload");
+   public Command getAutonomousCommand() {
+    return autoChooser.getSelected();
   }
+   
+  
 }
