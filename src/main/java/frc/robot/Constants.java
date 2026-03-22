@@ -90,7 +90,7 @@ public final class Constants {
  
     public static final double kChassisAngularOffset = 0;
 
-    public static final double kMaxSpeed = 42;
+    public static final double kMaxSpeed = 50;
     public static final double kMaxAngularSpeed = 10.5*Math.PI;
     public static final double kDriveDeadband = 0.05;
     public static final double kDriveDeadbandZ = 0.1;
