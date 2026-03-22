@@ -28,6 +28,7 @@ public class FireEnd extends Command {
   public void initialize() {
      m_shooter.stop();
     // System.out.println("Fire is called");
+    System.out.println("Fire run");
   }
    
   // Called every time the scheduler runs while the command is scheduled.

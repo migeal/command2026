@@ -21,11 +21,13 @@ public class Shooter extends SubsystemBase {
   public void fire(){
    LaunchR.set(0.6985);
     LaunchL.set(0.6985);
+  //  System.out.println("Fire run");
   }
   //just in case
   public void Fullfire(){
    LaunchR.set(1);
     LaunchL.set(1);
+    //System.out.println("Fire run");
   }
   public void reversefire(){
    LaunchR.set(-1);

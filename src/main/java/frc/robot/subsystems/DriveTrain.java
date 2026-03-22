@@ -120,6 +120,7 @@ public class DriveTrain extends SubsystemBase {
 
   @Override
   public void periodic() {
+    
     SignalLogger.enableAutoLogging(false);
    // LimelightHelpers.LimelightResults results = LimelightHelpers.getLatestResults("limelight");
     // update odometry
@@ -143,9 +144,9 @@ public class DriveTrain extends SubsystemBase {
       if(mt1.tagCount == 1 && mt1.rawFiducials.length == 1)
       {
             MTOne = true;
-            System.out.println("tagcount==1");
+            //System.out.println("tagcount==1");
 
-            System.out.println("mt1 is 1");
+            //System.out.println("mt1 is 1");
         if(mt1.rawFiducials[0].ambiguity > .7)
         {
           doRejectUpdate = true;
@@ -164,14 +165,17 @@ public class DriveTrain extends SubsystemBase {
 
       if(!doRejectUpdate)
       {
-        System.out.println("Update successful");
+        //System.out.println("Update successful");
         m_odometry.setVisionMeasurementStdDevs(VecBuilder.fill(.7,.7,9999999));
         m_odometry.addVisionMeasurement(
             mt1.pose,
             mt1.timestampSeconds);
-            System.out.println("m_odometry added");
+            //System.out.println("m_odometry added");
       }
     }
+    
+    m_field.setRobotPose(m_odometry.getEstimatedPosition());
+    //System.out.println("m_field updated to odometry");
    
     // if mt1 is more than 0 
     SmartDashboard.putBoolean("MT1 = one", MTOne);
@@ -365,14 +369,12 @@ public class DriveTrain extends SubsystemBase {
     m_frontRight.DriveStop();
   }
 
-  @Override
-  public void simulationPeriodic() {
+  // @Override
+  // public void periodic() {
 
-    m_field.setRobotPose(m_odometry.getEstimatedPosition());
-    System.out.println("m_field updated to odometry");
-    // This method will be called once per scheduler run during simulation
+  //   // This method will be called once per scheduler run during simulation
 
-   // topRightAngle.append(m_frontRight.getAngle());
-  }
+  //  // topRightAngle.append(m_frontRight.getAngle());
+  // }
   
 }

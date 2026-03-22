@@ -27,6 +27,7 @@ public class FireCon extends Command {
   @Override
   public void initialize() {
      m_shooter.fire();
+    System.out.println("Fire run");
     // System.out.println("Fire is called");
   }
    
