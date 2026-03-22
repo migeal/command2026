@@ -37,9 +37,9 @@ public final class Constants {
     public static final double kTurningEncoderPositionFactor = (Math.PI*2)/(kturnGearRatio); //position in radians
     public static final double kTurningEncoderVelocityFactor = kTurningEncoderPositionFactor/60.0; // meters per second
     
-    public static final double driveGainP = 0.0005;
-    public static final double driveGainI = 0.00005;
-    public static final double driveGainD = 0.0035;
+    public static final double driveGainP = 0.5;
+    public static final double driveGainI = 0.00001;
+    public static final double driveGainD = 0.01;
 
     public static final double turnGainP = 0.5;
     public static final double turnGainI = 0.00001;
