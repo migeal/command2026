@@ -30,8 +30,8 @@ public class Shooter extends SubsystemBase {
     //System.out.println("Fire run");
   }
   public void reversefire(){
-   LaunchR.set(-1);
-    LaunchL.set(-1);
+   LaunchR.set(-0.1);
+    LaunchL.set(-0.1);
   }
   //stop shooting
   public void stop(){

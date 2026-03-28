@@ -102,7 +102,7 @@ public class DriveTrain extends SubsystemBase {
 
     
         
-  private final SwerveDrivePoseEstimator m_odometry =
+  public final SwerveDrivePoseEstimator m_odometry =
     new SwerveDrivePoseEstimator(
       m_kinematics,
       new Rotation2d(-m_imu.getAngle()*Math.PI/180),
