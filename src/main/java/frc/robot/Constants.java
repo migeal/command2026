@@ -60,7 +60,7 @@ public final class Constants {
     public static final Translation2d blModuleOffset = new Translation2d(-0.546 / 2.0, 0.546 / 2.0);
     public static final Translation2d brModuleOffset = new Translation2d(-0.546 / 2.0, -0.546 / 2.0);
     public static final PIDConstants translationConstants = new PIDConstants(2.0, 0.0, 1.0);
-    public static final PIDConstants rotationConstants = new PIDConstants(2.0, 0.0, 1.0);
+    public static final PIDConstants rotationConstants = new PIDConstants(1.5, 0.0, 1.0);
     
 
     public static final double robotWidth = 0.622;
@@ -90,8 +90,8 @@ public final class Constants {
  
     public static final double kChassisAngularOffset = 0;
 
-    public static final double kMaxSpeed = 50;
-    public static final double kMaxAngularSpeed = 10.5*Math.PI;
+    public static final double kMaxSpeed = 42;
+    public static final double kMaxAngularSpeed = 10*Math.PI;
     public static final double kDriveDeadband = 0.05;
     public static final double kDriveDeadbandZ = 0.1;
     public static final boolean kTeleField = true;
