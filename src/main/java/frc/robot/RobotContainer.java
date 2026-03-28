@@ -72,7 +72,7 @@ public class RobotContainer {
   private final CommandXboxController m_driverController =
       new CommandXboxController(OperatorConstants.kDriverControllerPort);
       private final CommandJoystick m_GunnerStick = new CommandJoystick(OperatorConstants.kGunnerControllerPort);
-private final GenericHID m_pray = new GenericHID(1);
+private final GenericHID m_pray = new GenericHID(0);
       //
       //subsystems 
 
