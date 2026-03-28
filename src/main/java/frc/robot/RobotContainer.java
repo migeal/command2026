@@ -10,6 +10,8 @@ import frc.robot.commands.Autos;
 import frc.robot.commands.ExampleCommand;
 import frc.robot.subsystems.ExampleSubsystem;
 
+import java.util.List;
+
 import org.littletonrobotics.conduit.schema.Joystick;
 
 import com.pathplanner.lib.auto.AutoBuilder;
@@ -48,6 +50,7 @@ import frc.robot.subsystems.Pickup;
 import frc.robot.subsystems.Shooter;
 
 import frc.robot.commands.ReLoad;
+import frc.robot.commands.ReverseFire;
 import frc.robot.commands.DeStick;
 import frc.robot.commands.Eat;
 import frc.robot.commands.Spit;
@@ -84,6 +87,7 @@ private final GenericHID m_pray = new GenericHID(0);
        private final Eat m_eat = new Eat(m_pickup);
        private final Spit m_spit = new Spit(m_pickup);
        private final Fire m_fire = new Fire(m_shooter);
+       private final ReverseFire m_ReverseFire = new ReverseFire(m_shooter);
        //buttons
 
        private final JoystickButton m_trigger = new JoystickButton(m_pray,1);
@@ -165,6 +169,8 @@ private final GenericHID m_pray = new GenericHID(0);
 
     m_driverController.rightTrigger(0.7).whileTrue(m_eat);
 
+    m_GunnerStick.button(12).whileTrue(m_ReverseFire);
+
     m_GunnerStick.button(1).toggleOnTrue(m_fire);
     m_trigger.toggleOnTrue(m_fire);
 if(m_reload.getAsBoolean()){
@@ -188,7 +194,31 @@ if(m_reload.getAsBoolean()){
 
     m_reload_w_pickup.whileTrue(m_reLoad);
     m_reload_w_pickup.whileTrue(m_eat);
+// Add a button to SmartDashboard that will create and follow an on-the-fly path
+    // This example will simply move the robot 2m in the +X field direction
+    SmartDashboard.putData("On-the-fly path", Commands.runOnce(() -> {
+      Pose2d currentPose = m_robotDrive.m_odometry.getEstimatedPosition();
+      
+      // The rotation component in these poses represents the direction of travel
+      Pose2d startPos = new Pose2d(currentPose.getTranslation(), new Rotation2d());
+      Pose2d endPos = new Pose2d(currentPose.getTranslation().plus(new Translation2d(2.0, 0.0)), new Rotation2d());
 
+      List<Waypoint> waypoints = PathPlannerPath.waypointsFromPoses(startPos, endPos);
+      PathPlannerPath path = new PathPlannerPath(
+        waypoints, 
+        new PathConstraints(
+          4.0, 4.0, 
+          Units.degreesToRadians(360), Units.degreesToRadians(540)
+        ),
+        null, // Ideal starting state can be null for on-the-fly paths
+        new GoalEndState(0.0, currentPose.getRotation())
+      );
+
+      // Prevent this path from being flipped on the red alliance, since the given positions are already correct
+      path.preventFlipping = true;
+
+      AutoBuilder.followPath(path).schedule();
+      }));
 
   }
 
