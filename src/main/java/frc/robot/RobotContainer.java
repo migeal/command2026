@@ -95,6 +95,8 @@ private final GenericHID m_pray = new GenericHID(1);
        private final JoystickButton m_unload = new JoystickButton(m_pray,5);
        private final JoystickButton m_reload_w_pickup = new JoystickButton(m_pray, 3);
        private final JoystickButton m_RevFire = new JoystickButton(m_pray, 12);
+       private final JoystickButton m_Eat = new JoystickButton(m_pray, 4);
+       private final JoystickButton m_Spit = new JoystickButton(m_pray,6);
          
        private final SendableChooser<Command> autoChooser;
 
@@ -167,8 +169,11 @@ private final GenericHID m_pray = new GenericHID(1);
     
 
     m_driverController.leftTrigger(0.7).whileTrue(m_spit);
-
+   
     m_driverController.rightTrigger(0.7).whileTrue(m_eat);
+
+    m_Eat.whileTrue(m_eat);
+    m_Spit.whileTrue(m_spit);
 
     m_GunnerStick.button(12).whileTrue(m_ReverseFire);
 
