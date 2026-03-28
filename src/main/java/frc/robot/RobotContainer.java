@@ -204,7 +204,7 @@ if(m_reload.getAsBoolean()){
     m_reload_w_pickup.whileTrue(m_eat);
 // Add a button to SmartDashboard that will create and follow an on-the-fly path
     // This example will simply move the robot 2m in the +X field direction
-    SmartDashboard.putData("On-the-fly path", Commands.runOnce(() -> {
+    /*SmartDashboard.putData("On-the-fly path", Commands.runOnce(() -> {
       Pose2d currentPose = m_robotDrive.m_odometry.getEstimatedPosition();
       
       // The rotation component in these poses represents the direction of travel
@@ -227,7 +227,7 @@ if(m_reload.getAsBoolean()){
 
       AutoBuilder.followPath(path).schedule();
       }));
-
+*/
   }
 
   /**
