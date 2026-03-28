@@ -150,6 +150,8 @@ private final GenericHID m_pray = new GenericHID(0);
         Units.degreesToRadians(360), Units.degreesToRadians(540)
       ), 
       0
+
+       //AutoBuilder.followPath(path).schedule();
     ));
 
     new Trigger(m_exampleSubsystem::exampleCondition)
