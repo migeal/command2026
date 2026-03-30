@@ -83,10 +83,10 @@ public final class Constants {
 
 
     // encoder angluar offset 
-    public static final double kFrontLeftModuleAngularOffset = 0.295654;//*360;//Math.PI*2; 
-    public static final double kFrontRightModuleAngularOffset = -.463135;//*360;//Math.PI*2;
-    public static final double kBackLeftModuleAngularOffset = -0.054932;//*360;//Math.PI*2;
-    public static final double kBackRightModuleAngularOffset = 0.187988;//*360;//Math.PI*2;
+    public static final double kFrontLeftModuleAngularOffset = 0;//-0.2978515625;//*360;//Math.PI*2; 
+    public static final double kFrontRightModuleAngularOffset =0; //0.441162109375;//*360;//Math.PI*2;
+    public static final double kBackLeftModuleAngularOffset = 0;//0.064208984375;//*360;//Math.PI*2;
+    public static final double kBackRightModuleAngularOffset = 0;//-0.180419921875;//*360;//Math.PI*2;
  
     public static final double kChassisAngularOffset = 0;
 
