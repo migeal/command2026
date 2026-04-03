@@ -45,7 +45,7 @@ public final class Constants {
     public static final double turnGainI = 0.00001;
     public static final double turnGainD = 0.01;
 
-    public static final double kAngleEncoderResolution = 42;
+    public static final double kAngleEncoderResolution = 5.2;
     public static final boolean kTurningEncoderInverted = true;
    // public static final double kTurningMinOutput = -0.1;
     //public static final double kTurningMaxOutput = 0.1;
