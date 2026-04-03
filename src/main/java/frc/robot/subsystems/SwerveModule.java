@@ -108,6 +108,7 @@ public class SwerveModule extends SubsystemBase {
       .feedbackSensor(FeedbackSensor.kPrimaryEncoder)
       .pid(SwerveConstants.driveGainP, SwerveConstants.driveGainI, SwerveConstants.driveGainD);
     m_driveMotor = new SparkMax(driveMotorChannel, MotorType.kBrushless);
+    m_driveMotorConfig.smartCurrentLimit(60);
     m_driveMotor.configure(m_driveMotorConfig, ResetMode.valueOf("kNoResetSafeParameters"), PersistMode.valueOf("kPersistParameters"));
 
     m_driveMotorChannel = driveMotorChannel; //for debugging
@@ -126,6 +127,7 @@ public class SwerveModule extends SubsystemBase {
       .feedbackSensor(FeedbackSensor.kPrimaryEncoder)
       .pid(SwerveConstants.turnGainP, SwerveConstants.turnGainI, SwerveConstants.turnGainD);
     m_turningMotor = new SparkMax(turningMotorChannel, MotorType.kBrushless);
+    m_turningMotorConfig.smartCurrentLimit(30);
     m_turningMotor.configure(m_turningMotorConfig, ResetMode.valueOf("kNoResetSafeParameters"), PersistMode.valueOf("kPersistParameters"));
 
     m_turnEncoder = m_turningMotor.getEncoder();
