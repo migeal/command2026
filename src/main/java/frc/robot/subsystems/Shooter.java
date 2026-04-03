@@ -19,8 +19,8 @@ public class Shooter extends SubsystemBase {
  
 //shoot ball
   public void fire(){
-   LaunchR.set(0.6985);
-    LaunchL.set(0.6985);
+   LaunchR.set(1);
+    LaunchL.set(1);
   //  System.out.println("Fire run");
   }
   //just in case

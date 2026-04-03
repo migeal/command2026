@@ -59,8 +59,8 @@ public final class Constants {
     public static final Translation2d frModuleOffset = new Translation2d(0.546 / 2.0, -0.546 / 2.0);
     public static final Translation2d blModuleOffset = new Translation2d(-0.546 / 2.0, 0.546 / 2.0);
     public static final Translation2d brModuleOffset = new Translation2d(-0.546 / 2.0, -0.546 / 2.0);
-    public static final PIDConstants translationConstants = new PIDConstants(2.0, 0.0, 1.0);
-    public static final PIDConstants rotationConstants = new PIDConstants(1.5, 0.0, 1.0);
+    public static final PIDConstants translationConstants = new PIDConstants(4.0, 0.0, 1.0);
+    public static final PIDConstants rotationConstants = new PIDConstants(4, 0.0, 1.0);
     
 
     public static final double robotWidth = 0.622;
