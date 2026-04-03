@@ -94,6 +94,9 @@ private final GenericHID m_pray = new GenericHID(0);
        private final JoystickButton m_reload = new JoystickButton(m_pray,2);
        private final JoystickButton m_unload = new JoystickButton(m_pray,5);
        private final JoystickButton m_reload_w_pickup = new JoystickButton(m_pray, 3);
+       private final JoystickButton m_RevFire = new JoystickButton(m_pray, 12);
+       private final JoystickButton m_Eat = new JoystickButton(m_pray, 4);
+       private final JoystickButton m_Spit = new JoystickButton(m_pray,6);
          
        private final SendableChooser<Command> autoChooser;
 
@@ -166,8 +169,11 @@ private final GenericHID m_pray = new GenericHID(0);
     
 
     m_driverController.leftTrigger(0.7).whileTrue(m_spit);
-
+   
     m_driverController.rightTrigger(0.7).whileTrue(m_eat);
+
+    m_Eat.whileTrue(m_eat);
+    m_Spit.whileTrue(m_spit);
 
     m_GunnerStick.button(12).whileTrue(m_ReverseFire);
 
@@ -192,11 +198,13 @@ if(m_reload.getAsBoolean()){
 
     m_unload.whileTrue(m_deStick);
 
+    m_RevFire.whileTrue(m_ReverseFire);
+
     m_reload_w_pickup.whileTrue(m_reLoad);
     m_reload_w_pickup.whileTrue(m_eat);
 // Add a button to SmartDashboard that will create and follow an on-the-fly path
     // This example will simply move the robot 2m in the +X field direction
-    SmartDashboard.putData("On-the-fly path", Commands.runOnce(() -> {
+    /*SmartDashboard.putData("On-the-fly path", Commands.runOnce(() -> {
       Pose2d currentPose = m_robotDrive.m_odometry.getEstimatedPosition();
       
       // The rotation component in these poses represents the direction of travel
@@ -219,7 +227,7 @@ if(m_reload.getAsBoolean()){
 
       AutoBuilder.followPath(path).schedule();
       }));
-
+*/
   }
 
   /**
