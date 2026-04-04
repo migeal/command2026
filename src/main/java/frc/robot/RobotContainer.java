@@ -246,11 +246,11 @@ if(m_reload.getAsBoolean()){
    public Command getAutonomousCommand() {
  return new DriveAuto(m_robotDrive);
     // return new InstantCommand(() -> System.out.print("running AUTO!!"));
-/*try{
-    //return autoChooser.getSelected();
-        return Commands.run(()-> m_robotDrive.drive(15, 0, 0, true))
+try{
+    return autoChooser.getSelected();
+       /*  return Commands.run(()-> m_robotDrive.drive(15, 0, 0, true))
         .withTimeout(15)
-        .finallyDo(()-> m_robotDrive.drive(0, 0, 0, false));
+        .finallyDo(()-> m_robotDrive.drive(0, 0, 0, false));*/
 } catch (Exception e) {
           DriverStation.reportError("Big oops: " + e.getMessage(), e.getStackTrace());
           return new DriveAuto(m_robotDrive);
