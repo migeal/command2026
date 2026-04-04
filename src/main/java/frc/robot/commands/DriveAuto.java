@@ -36,9 +36,9 @@ public class DriveAuto extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if (m_time.get() < 5) {
-      m_subsystem.drive(-2, 0, 0, isScheduled());
-    } else if (m_time.get() > 5) {
+    if (m_time.get() < 15) {
+      m_subsystem.drive(0.5, 0, 0, true);
+    } else if (m_time.get() > 15) {
       m_subsystem.drive(0, 0, 0, false);
     }
   }
