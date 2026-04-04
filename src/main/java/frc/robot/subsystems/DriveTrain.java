@@ -8,6 +8,8 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.DriveConstants;
 import frc.robot.LimelightHelpers;
+import frc.robot.RobotContainer;
+import frc.robot.Constants;
 import frc.robot.Constants.ControlSystem;
 import edu.wpi.first.wpilibj.smartdashboard.Field2d;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -17,20 +19,25 @@ import edu.wpi.first.util.datalog.DataLog;
 import edu.wpi.first.util.datalog.DoubleLogEntry;
 import edu.wpi.first.util.datalog.StringLogEntry;
 import edu.wpi.first.wpilibj.DataLogManager;
-
-
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.kinematics.ChassisSpeeds;
 import edu.wpi.first.math.kinematics.Odometry;
 import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
 import edu.wpi.first.math.estimator.SwerveDrivePoseEstimator;
 import edu.wpi.first.math.kinematics.SwerveModulePosition;
+import edu.wpi.first.math.kinematics.SwerveModuleState;
+import edu.wpi.first.units.measure.Velocity;
 import edu.wpi.first.wpilibj.ADIS16448_IMU;
 import edu.wpi.first.math.VecBuilder;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
 
 import com.ctre.phoenix6.SignalLogger;
+import com.pathplanner.lib.auto.AutoBuilder;
+import com.pathplanner.lib.config.RobotConfig;
+import com.pathplanner.lib.controllers.PPHolonomicDriveController;
+import com.revrobotics.spark.config.FeedForwardConfig;
 import com.studica.frc.AHRS;
 import com.studica.frc.AHRS.NavXComType;
 
@@ -43,6 +50,9 @@ public class DriveTrain extends SubsystemBase {
   
   private final Field2d m_field = new Field2d();
   /** Creates a new Drive Train Subsystem. */
+
+  
+
 
   private final Translation2d m_frontLeftLocation = new Translation2d(DriveConstants.WheelXdist, DriveConstants.WheelYdist);
   private final Translation2d m_frontRightLocation = new Translation2d(DriveConstants.WheelXdist, -DriveConstants.WheelYdist);
@@ -77,6 +87,42 @@ public class DriveTrain extends SubsystemBase {
     DriveConstants.kBackRightModuleAngularOffset);
     //DriveConstants.kBackRightChassisAngularOffset);
 
+
+public void configureAutoBuilder() {
+    try{
+      RobotConfig config = RobotConfig.fromGUISettings();
+
+      
+
+      // Configure AutoBuilder
+      AutoBuilder.configure(
+        m_odometry::getEstimatedPosition, 
+        m_odometry::resetPose, 
+        RobotContainer::getSpeeds,
+        this::DriveRobotRelative,
+        new PPHolonomicDriveController(
+          Constants.DriveConstants.translationConstants,
+          Constants.DriveConstants.rotationConstants
+        ),
+        config,
+        () -> {
+            // Boolean supplier that controls when the path will be mirrored for the red alliance
+            // This will flip the path being followed to the red side of the field.
+            // THE ORIGIN WILL REMAIN ON THE BLUE SIDE
+
+            var alliance = DriverStation.getAlliance();
+            if (alliance.isPresent()) {
+                return alliance.get() == DriverStation.Alliance.Red;
+            }
+            return false;
+        },
+        this
+      );
+    }catch(Exception e){
+      DriverStation.reportError("Failed to load PathPlanner config and configure AutoBuilder", e.getStackTrace());
+    }
+    
+  }
 
   //private final ADIS16448_IMU m_imu = new ADIS16448_IMU();
   // Might be a point of error, hope for the best though.
@@ -116,6 +162,15 @@ public class DriveTrain extends SubsystemBase {
       );
 
   public DriveTrain() {}
+
+  public void DriveRobotRelative(ChassisSpeeds robotReletiveSpeeds){
+   m_frontLeft.driveRobotRelative(robotReletiveSpeeds);
+   m_frontRight.driveRobotRelative(robotReletiveSpeeds);
+   m_backLeft.driveRobotRelative(robotReletiveSpeeds);
+   m_backRight.driveRobotRelative(robotReletiveSpeeds);
+
+    
+  }
   
 
   @Override
