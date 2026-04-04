@@ -247,7 +247,8 @@ if(m_reload.getAsBoolean()){
  //return new DriveAuto(m_robotDrive);
     // return new InstantCommand(() -> System.out.print("running AUTO!!"));
 try{
-    return autoChooser.getSelected();
+   // return autoChooser.getSelected();
+   return new DriveAuto(m_robotDrive);
        /*  return Commands.run(()-> m_robotDrive.drive(15, 0, 0, true))
         .withTimeout(15)
         .finallyDo(()-> m_robotDrive.drive(0, 0, 0, false));*/
