@@ -244,7 +244,7 @@ if(m_reload.getAsBoolean()){
    * @return the command to run in autonomous
    */
    public Command getAutonomousCommand() {
- return new DriveAuto(m_robotDrive);
+ //return new DriveAuto(m_robotDrive);
     // return new InstantCommand(() -> System.out.print("running AUTO!!"));
 try{
     return autoChooser.getSelected();
@@ -254,7 +254,7 @@ try{
 } catch (Exception e) {
           DriverStation.reportError("Big oops: " + e.getMessage(), e.getStackTrace());
           return new DriveAuto(m_robotDrive);
-      }*/
+      }
   }
    
   public static ChassisSpeeds getSpeeds() {
