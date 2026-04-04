@@ -38,6 +38,7 @@ import edu.wpi.first.wpilibj2.command.Commands;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.GenericHID.RumbleType;
 import edu.wpi.first.wpilibj.PS4Controller.Button;
@@ -55,6 +56,7 @@ import frc.robot.subsystems.Shooter;
 import frc.robot.commands.ReLoad;
 import frc.robot.commands.ReverseFire;
 import frc.robot.commands.DeStick;
+import frc.robot.commands.DriveAuto;
 import frc.robot.commands.Eat;
 import frc.robot.commands.Spit;
 import frc.robot.commands.Fire;
@@ -244,8 +246,15 @@ if(m_reload.getAsBoolean()){
    public Command getAutonomousCommand() {
 
     // return new InstantCommand(() -> System.out.print("running AUTO!!"));
-
-    return autoChooser.getSelected();
+try{
+    //return autoChooser.getSelected();
+        return Commands.run(()-> m_robotDrive.drive(15, 0, 0, true))
+        .withTimeout(15)
+        .finallyDo(()-> m_robotDrive.drive(0, 0, 0, false));
+} catch (Exception e) {
+          DriverStation.reportError("Big oops: " + e.getMessage(), e.getStackTrace());
+          return new DriveAuto(m_robotDrive);
+      }
   }
    
   public static ChassisSpeeds getSpeeds() {
