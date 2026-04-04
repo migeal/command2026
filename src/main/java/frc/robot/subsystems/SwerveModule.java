@@ -142,39 +142,8 @@ public class SwerveModule extends SubsystemBase {
     m_desiredState.angle = getAngle();//new Rotation2d(m_CANcoder.getPosition().getValue());
     //m_driveEncoder.setPosition(0);
     resetEncoders();
-
-    try{
-      RobotConfig config = RobotConfig.fromGUISettings();
-
-      // Configure AutoBuilder
-      AutoBuilder.configure(
-        this::getPose, 
-        this::resetPose, 
-        this::getSpeeds, 
-        this::driveRobotRelative, 
-        new PPHolonomicDriveController(
-          Constants.DriveConstants.translationConstants,
-          Constants.DriveConstants.rotationConstants
-        ),
-        config,
-        () -> {
-            // Boolean supplier that controls when the path will be mirrored for the red alliance
-            // This will flip the path being followed to the red side of the field.
-            // THE ORIGIN WILL REMAIN ON THE BLUE SIDE
-
-            var alliance = DriverStation.getAlliance();
-            if (alliance.isPresent()) {
-                return alliance.get() == DriverStation.Alliance.Red;
-            }
-            return false;
-        },
-        this
-      );
-    }catch(Exception e){
-      DriverStation.reportError("Failed to load PathPlanner config and configure AutoBuilder", e.getStackTrace());
-    }
-    
   }
+    
 
 public Pose2d getPose() {
     return odometry.getPoseMeters();

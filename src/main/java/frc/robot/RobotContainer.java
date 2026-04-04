@@ -14,6 +14,8 @@ import java.util.List;
 
 import org.littletonrobotics.conduit.schema.Joystick;
 
+import com.ctre.phoenix6.swerve.SwerveDrivetrain;
+import com.ctre.phoenix6.swerve.SwerveModule;
 import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.auto.NamedCommands;
 import com.pathplanner.lib.commands.PathPlannerAuto;
@@ -27,6 +29,7 @@ import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Translation2d;
+import edu.wpi.first.math.kinematics.ChassisSpeeds;
 import edu.wpi.first.math.util.Units;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -67,7 +70,7 @@ import frc.robot.Constants.DriveConstants;
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
-
+  
   // Replace with CommandPS4Controller or CommandJoystick if needed
   private final CommandXboxController m_driverController =
       new CommandXboxController(OperatorConstants.kDriverControllerPort);
@@ -100,8 +103,11 @@ private final GenericHID m_pray = new GenericHID(0);
          
        private final SendableChooser<Command> autoChooser;
 
+       private static SwerveDrivetrain.SwerveDriveState currentState;
+
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
+    m_robotDrive.configureAutoBuilder();
     // Configure the trigger bindings
     configureBindings();
  // For convenience a programmer could change this when going to competition.
@@ -242,5 +248,8 @@ if(m_reload.getAsBoolean()){
     return autoChooser.getSelected();
   }
    
+  public static ChassisSpeeds getSpeeds() {
+    return currentState.Speeds;
+  }
   
 }
