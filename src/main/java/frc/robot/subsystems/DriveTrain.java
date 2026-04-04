@@ -34,9 +34,11 @@ import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
 
 import com.ctre.phoenix6.SignalLogger;
+import com.ctre.phoenix6.swerve.SwerveRequest;
 import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.config.RobotConfig;
 import com.pathplanner.lib.controllers.PPHolonomicDriveController;
+import com.pathplanner.lib.util.DriveFeedforwards;
 import com.revrobotics.spark.config.FeedForwardConfig;
 import com.studica.frc.AHRS;
 import com.studica.frc.AHRS.NavXComType;
@@ -58,6 +60,8 @@ public class DriveTrain extends SubsystemBase {
   private final Translation2d m_frontRightLocation = new Translation2d(DriveConstants.WheelXdist, -DriveConstants.WheelYdist);
   private final Translation2d m_backLeftLocation = new Translation2d(-DriveConstants.WheelXdist, DriveConstants.WheelYdist);
   private final Translation2d m_backRightLocation = new Translation2d(-DriveConstants.WheelXdist, -DriveConstants.WheelYdist);
+
+  private final SwerveRequest.ApplyRobotSpeeds m_pathApplyRobotSpeeds = new SwerveRequest.ApplyRobotSpeeds();
 
   private final SwerveModule m_frontLeft= new SwerveModule(
     ControlSystem.kLeftFrontDrive,
@@ -99,7 +103,8 @@ public void configureAutoBuilder() {
         m_odometry::getEstimatedPosition, 
         m_odometry::resetPose, 
         RobotContainer::getSpeeds,
-        this::DriveRobotRelative,
+         this::DriveRobotRelativeWithRequest,
+        
         new PPHolonomicDriveController(
           Constants.DriveConstants.translationConstants,
           Constants.DriveConstants.rotationConstants
@@ -170,6 +175,17 @@ public void configureAutoBuilder() {
    m_backRight.driveRobotRelative(robotReletiveSpeeds);
 
     
+  }
+
+  public void DriveRobotRelativeWithRequest(ChassisSpeeds robotRelativeSpeeds, DriveFeedforwards feedforwards) {
+    m_pathApplyRobotSpeeds.withSpeeds(robotRelativeSpeeds)
+            .withWheelForceFeedforwardsX(feedforwards.robotRelativeForcesXNewtons())
+            .withWheelForceFeedforwardsY(feedforwards.robotRelativeForcesYNewtons());
+    
+    m_frontLeft.driveRobotRelative(m_pathApplyRobotSpeeds.Speeds);
+   m_frontRight.driveRobotRelative(m_pathApplyRobotSpeeds.Speeds);
+   m_backLeft.driveRobotRelative(m_pathApplyRobotSpeeds.Speeds);
+   m_backRight.driveRobotRelative(m_pathApplyRobotSpeeds.Speeds);
   }
   
 
